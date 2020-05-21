@@ -1,0 +1,21 @@
+version: "3"
+services:
+  web:
+    build: 
+      context: ./Ecoupon-client/
+      dockerfile: dockerfile
+    ports: 
+      - 3200:4200 
+    volumes: 
+      - /ecoupon/client/node_modules
+      - ./Ecoupon-client:/ecoupon/client
+  api:
+    build:
+      context: ./ecoupon-backend/
+      dockerfile: dockerfile
+    ports:
+      - 5100:5000
+    volumes:
+      - ./ecoupon-backend/:/ecoupon/api
+  database:
+    build: ./ecoupon-database/    

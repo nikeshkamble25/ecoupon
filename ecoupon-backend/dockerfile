@@ -1,0 +1,7 @@
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1
+WORKDIR /ecoupon/api
+COPY . .
+# WORKDIR /ecoupon/api/ecoupon.api
+RUN dotnet restore
+# WORKDIR /ecoupon/api
+CMD [ "dotnet", "watch","--project","ecoupon.api/ecoupon.api.csproj","run"," --urls","http://0.0.0.0:5000"]

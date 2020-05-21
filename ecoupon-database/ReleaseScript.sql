@@ -1,0 +1,10 @@
+CREATE DATABASE ecoupon1;
+
+\c ecoupon1;
+
+CREATE TABLE UserManagment
+(
+    Id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY, 
+    Username VARCHAR(100),
+    Password VARCHAR(100)
+);
