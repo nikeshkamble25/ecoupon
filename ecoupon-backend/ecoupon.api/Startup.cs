@@ -18,7 +18,7 @@ namespace ecoupon.api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<EcouponContext>(x=>x.UseNpgsql("Host=database;Database=ecoupon;Username=postgres;Password=postgres"));
+            services.AddDbContext<EcouponContext>(x=>x.UseNpgsql("Host=database;Database=ecoupon;Username=postgres;Password=postgres",b=>b.MigrationsAssembly("ecoupon.api")));
             services.AddControllers();
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
