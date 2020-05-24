@@ -2,11 +2,11 @@ FROM postgres
 WORKDIR /ecoupon/database
 COPY . .
 ENV POSTGRES_USER=postgres
-ENV POSTGRES_PASSWORD=POSTGRES_USER
+ENV POSTGRES_PASSWORD=postgres
 ENV POSTGRES_PORT=5432
 USER postgres
-COPY *.sh /docker-entrypoint-initdb.d
-RUN initdb
+# COPY *.sh /docker-entrypoint-initdb.d
+# RUN initdb
 # RUN pg_lsclusters
 # RUN /etc/init.d/postgresql start
 # RUN service postgresql start
