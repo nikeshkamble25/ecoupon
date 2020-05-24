@@ -1,21 +1,26 @@
 version: "3"
 services:
   web:
+    restart: always
     build: 
       context: ./Ecoupon-client/
-      dockerfile: dockerfile
+      dockerfile: Dockerfile.developement
     ports: 
       - 3200:4200 
     volumes: 
       - /ecoupon/client/node_modules
       - ./Ecoupon-client:/ecoupon/client
   api:
+    restart: always
     build:
       context: ./ecoupon-backend/
-      dockerfile: dockerfile
+      dockerfile: Dockerfile.developement
     ports:
-      - 5100:5000
+      - 5000:5000
     volumes:
       - ./ecoupon-backend/:/ecoupon/api
   database:
-    build: ./ecoupon-database/    
+    restart: always
+    build: 
+      context: ./ecoupon-database/    
+      dockerfile: Dockerfile.developement
