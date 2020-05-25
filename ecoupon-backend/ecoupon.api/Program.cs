@@ -20,7 +20,7 @@ namespace ecoupon.api
                 {
                     var context = services.GetRequiredService<EcouponContext>();
                     context.Database.Migrate();
-                    host.Run();
+                    host.Run();                    
                 }
                 catch (Exception ex)
                 {

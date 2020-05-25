@@ -7,5 +7,6 @@ namespace ecoupon.repository.contracts
     public interface IUserRepository
     {
         Task<List<User>> GetAllUsers();
+        Task<bool> AddUser();
     }
 }

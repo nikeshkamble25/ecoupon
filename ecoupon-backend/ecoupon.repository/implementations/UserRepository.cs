@@ -19,5 +19,12 @@ namespace ecoupon.repository.implementations
             var users = await _context.Users.ToListAsync();
             return users;
         }
+        public async Task<bool> AddUser()
+        {
+            bool userAdded = false;
+            var users = await _context.Users.ToListAsync();
+            userAdded = true;
+            return userAdded;
+        }
     }
 }
