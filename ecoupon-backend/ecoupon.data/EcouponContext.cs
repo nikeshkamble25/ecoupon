@@ -7,7 +7,6 @@ namespace ecoupon.data
     {
         public EcouponContext(DbContextOptions<EcouponContext> options) : base(options)
         {
-
         }
         public DbSet<User> Users { get; set; }
     }

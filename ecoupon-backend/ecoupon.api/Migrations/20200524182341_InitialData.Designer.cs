@@ -9,8 +9,8 @@ using ecoupon.data;
 namespace ecoupon.api.Migrations
 {
     [DbContext(typeof(EcouponContext))]
-    [Migration("20200524135117_Added Inital Structure")]
-    partial class AddedInitalStructure
+    [Migration("20200524182341_InitialData")]
+    partial class InitialData
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

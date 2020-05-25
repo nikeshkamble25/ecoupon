@@ -19,6 +19,8 @@ services:
       - 5000:5000
     volumes:
       - ./ecoupon-backend/:/ecoupon/api
+    depends_on: 
+      - database
   database:
     restart: always
     build: 
