@@ -1,7 +1,5 @@
 bin
 obj
-.vscode
 .vscode/*
-.vs
-.vs/*
+LICENSE
 node_modules
