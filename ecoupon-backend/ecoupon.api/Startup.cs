@@ -10,6 +10,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ecoupon.api.Hub;
+using Microsoft.AspNetCore.SignalR;
 
 namespace ecoupon.api
 {
@@ -20,29 +22,37 @@ namespace ecoupon.api
             Configuration = configuration;
         }
         public IConfiguration Configuration { get; }
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<EcouponContext>(x => x.UseNpgsql("Host=database;Database=ecoupon;Username=postgres;Password=postgres", b => b.MigrationsAssembly("ecoupon.api")));
             services.AddControllers();
-
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddAutoMapper(typeof(Startup).Assembly);
             IMapper mapper = EcouponMapperConfiguration.Configure();
+            services.AddSignalR();
+            services.AddCors();
             services.AddSingleton(mapper);
         }
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseCors(x => x
+                        .WithOrigins("http://localhost:4200")
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()
+                        .AllowCredentials()
+                        );
+
             app.UseRouting();
             app.UseAuthorization();
+           
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<BroadcastHub>("/notify");
             });
         }
     }

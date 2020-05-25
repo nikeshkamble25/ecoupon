@@ -6,7 +6,7 @@ services:
       context: ./Ecoupon-client/
       dockerfile: Dockerfile.developement
     ports: 
-      - 3200:4200 
+      - 4200:4200 
     volumes: 
       - /ecoupon/client/node_modules
       - ./Ecoupon-client:/ecoupon/client
