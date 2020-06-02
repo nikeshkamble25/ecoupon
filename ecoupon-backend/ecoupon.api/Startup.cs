@@ -24,7 +24,7 @@ namespace ecoupon.api
         public IConfiguration Configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<EcouponContext>(x => x.UseNpgsql("Host=database;Database=ecoupon;Username=postgres;Password=postgres", b => b.MigrationsAssembly("ecoupon.api")));
+            services.AddDbContext<EcouponContext>(x => x.UseNpgsql("Host=database-cluster-ip-service;Database=ecoupon;Username=postgres;Password=postgres", b => b.MigrationsAssembly("ecoupon.api")));
             services.AddControllers();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddAutoMapper(typeof(Startup).Assembly);

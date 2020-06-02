@@ -4,9 +4,9 @@ services:
     restart: always
     build: 
       context: ./Ecoupon-client/
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.developement
     ports: 
-      - 1000:80 
+      - 4200:4200 
     volumes: 
       - /ecoupon/client/node_modules
       - ./Ecoupon-client:/ecoupon/client
@@ -14,9 +14,9 @@ services:
     restart: always
     build:
       context: ./ecoupon-backend/
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.developement
     ports:
-      - 1001:5000
+      - 5000:5000
     volumes:
       - ./ecoupon-backend/:/ecoupon/api
     depends_on: 
@@ -25,4 +25,4 @@ services:
     restart: always
     build: 
       context: ./ecoupon-database/    
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.developement

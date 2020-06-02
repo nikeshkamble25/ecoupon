@@ -1,0 +1,7 @@
+FROM postgres
+WORKDIR /ecoupon/database
+COPY . .
+ENV POSTGRES_USER=postgres
+ENV POSTGRES_PASSWORD=postgres
+ENV POSTGRES_PORT=5432
+USER postgres
